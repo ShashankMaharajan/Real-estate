@@ -3,10 +3,11 @@
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 @theme inline {
-  /* Instrument Serif for display (one weight + a true italic used for accent words);
-     Instrument Sans for everything else (real 400–700 weights). */
+  /* Fraunces for display: optical sizing keeps it refined at headline sizes and sturdy
+     at price/title sizes, and its true italic carries the accent words. Instrument Sans
+     for everything else (real 400–700 weights). */
   --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-serif: "Fraunces", Georgia, serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
@@ -39,15 +40,15 @@
 /* Type scale: fluid serif sizes for headings (375px → 1280px viewports). Smaller text
    uses Tailwind's xs/sm/base/lg steps; nothing goes below xs (12px). */
 @theme {
-  --text-display: clamp(3.5rem, 2.46rem + 4.42vw, 6rem);
-  --text-display--line-height: 0.98;
-  --text-display--letter-spacing: -0.02em;
-  --text-heading: clamp(2.875rem, 2.1rem + 3.31vw, 4.75rem);
-  --text-heading--line-height: 1.02;
-  --text-heading--letter-spacing: -0.015em;
-  --text-title: clamp(2.125rem, 1.66rem + 1.99vw, 3.25rem);
-  --text-title--line-height: 1.06;
-  --text-title--letter-spacing: -0.01em;
+  --text-display: clamp(3.25rem, 2.32rem + 3.98vw, 5.5rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.025em;
+  --text-heading: clamp(2.75rem, 2.13rem + 2.65vw, 4.25rem);
+  --text-heading--line-height: 1.05;
+  --text-heading--letter-spacing: -0.02em;
+  --text-title: clamp(2rem, 1.64rem + 1.55vw, 2.875rem);
+  --text-title--line-height: 1.1;
+  --text-title--letter-spacing: -0.015em;
   --ease-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
   /* Photos, maps, cards and panels: 20px on desktop, easing to 12px on phones. */
   --radius-media: clamp(12px, 1.6vw, 20px);
@@ -111,7 +112,8 @@
   body { margin: 0; background: var(--background); color: var(--foreground); font-family: var(--font-sans); line-height: 1.6; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
   button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
   h1, h2, h3, p { margin: 0; }
-  h1, h2 { font-family: var(--font-serif); font-weight: 400; text-wrap: balance; }
+  /* 360 is a variable-font weight: light enough to feel refined at display sizes. */
+  h1, h2 { font-family: var(--font-serif); font-weight: 360; text-wrap: balance; }
   h3 { font-size: 1.125rem; font-weight: 500; line-height: 1.35; letter-spacing: -0.01em; }
   p { text-wrap: pretty; }
   /* One italic accent word per heading: <h2>A few places you’ll <em>love</em>.</h2> */
@@ -127,9 +129,9 @@
   .brand-mark { width: 1.07em; height: 1.2em; }
   .eyebrow { display: flex; align-items: center; gap: 12px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
   .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
-  .lede { max-width: 38rem; font-size: 1.0625rem; line-height: 1.7; color: var(--muted-foreground); }
-  .body-copy { font-size: 0.9375rem; line-height: 1.7; color: var(--muted-foreground); }
-  .statement { font-family: var(--font-serif); font-weight: 400; letter-spacing: -0.01em; }
+  .lede { max-width: 38rem; font-size: 1.125rem; line-height: 1.7; color: var(--muted-foreground); }
+  .body-copy { font-size: 1rem; line-height: 1.75; color: var(--muted-foreground); }
+  .statement { font-family: var(--font-serif); font-weight: 360; letter-spacing: -0.015em; }
   .surface-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-media); box-shadow: var(--elevation-soft); }
   .icon-circle { display: grid; flex-shrink: 0; place-items: center; width: 44px; height: 44px; border: 1px solid var(--hairline); border-radius: 999px; transition: background-color var(--motion-base) var(--ease-soft), color var(--motion-base) var(--ease-soft), border-color var(--motion-base); }
 
@@ -140,7 +142,7 @@
 
   /* Header: sticky, frosted, hairline. */
   .site-header { position: sticky; top: 0; z-index: 40; border-bottom: 1px solid var(--hairline); background: color-mix(in oklch, var(--background) 78%, transparent); backdrop-filter: saturate(1.4) blur(16px); -webkit-backdrop-filter: saturate(1.4) blur(16px); }
-  .nav-link { position: relative; padding-block: 10px; font-size: 0.875rem; color: var(--muted-foreground); transition: color var(--motion-fast); }
+  .nav-link { position: relative; padding-block: 10px; font-size: 0.9375rem; color: var(--muted-foreground); transition: color var(--motion-fast); }
   .nav-link::after { content: ""; position: absolute; right: 0; bottom: 4px; left: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform var(--motion-base) var(--ease-soft); }
   .nav-link:hover, .nav-link[data-status="active"] { color: var(--foreground); }
   .nav-link:hover::after, .nav-link[data-status="active"]::after { transform: scaleX(1); transform-origin: left; }
@@ -150,8 +152,8 @@
   .hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; animation: settle 1.8s var(--ease-soft) both; }
   .hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, var(--overlay-clear) 35%, var(--overlay-strong) 100%), linear-gradient(90deg, color-mix(in oklch, var(--overlay-strong) 70%, transparent), var(--overlay-clear) 70%); }
   .hero-content { position: absolute; inset: 0; z-index: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-start; padding-bottom: 128px; color: var(--on-image); }
-  .hero h1 { margin-top: 20px; font-size: var(--text-display); line-height: 0.98; letter-spacing: -0.02em; }
-  .hero-content p { max-width: 26rem; margin-top: 20px; font-size: 1.0625rem; line-height: 1.6; opacity: 0.9; }
+  .hero h1 { margin-top: 20px; font-size: var(--text-display); line-height: 1; letter-spacing: -0.025em; }
+  .hero-content p { max-width: 28rem; margin-top: 20px; font-size: 1.125rem; line-height: 1.6; opacity: 0.9; }
   .hero-note { position: absolute; z-index: 2; top: 20px; right: 20px; display: flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid oklch(1 0 0 / 18%); border-radius: 999px; background: oklch(0.14 0.02 155 / 40%); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: var(--on-image); font-size: 0.75rem; }
   :is(.hero, .panel) :is(h1, h2) em { color: var(--sand); }
 
@@ -182,16 +184,16 @@
     .property-cta { opacity: 0; transform: translate(-4px, 4px); }
     .property-card:hover .property-cta { opacity: 1; transform: none; }
   }
-  .property-facts { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; color: var(--muted-foreground); font-size: 0.8125rem; }
+  .property-facts { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; color: var(--muted-foreground); font-size: 0.875rem; }
   .property-facts li { display: flex; align-items: center; gap: 6px; }
-  .property-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-family: var(--font-serif); font-size: 1.75rem; line-height: 1; color: var(--primary); }
+  .property-price { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); font-family: var(--font-serif); font-size: 1.625rem; font-weight: 400; line-height: 1; letter-spacing: -0.01em; color: var(--primary); }
   .property-price small { font-family: var(--font-sans); font-size: 0.8125rem; color: var(--muted-foreground); }
 
   /* Browse-by-type bento tiles. */
   .type-tile { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 32px; min-height: 240px; padding: 28px; background: var(--surface); border: 1px solid var(--hairline); border-radius: var(--radius-media); transition: transform var(--motion-base) var(--ease-soft), box-shadow var(--motion-base) var(--ease-soft); }
   .type-tile:hover { transform: translateY(-3px); box-shadow: var(--elevation-soft); }
   .type-tile:hover .icon-circle { background: var(--primary); border-color: transparent; color: var(--primary-foreground); }
-  .type-tile-count { font-family: var(--font-serif); font-size: clamp(4rem, 3rem + 3vw, 6rem); line-height: 0.9; color: var(--primary); }
+  .type-tile-count { font-family: var(--font-serif); font-size: clamp(4rem, 3rem + 3vw, 6rem); font-weight: 300; line-height: 0.9; letter-spacing: -0.03em; color: var(--primary); }
   .type-tile--feature { overflow: hidden; background: var(--forest); color: var(--on-image); border-color: transparent; }
   .type-tile > :not(.type-tile-mark) { position: relative; }
   /* Oversized, faint logo mark filling the feature tile. */
@@ -226,7 +228,7 @@
 
   /* Footer with an oversized, cropped wordmark. */
   .footer-heading { margin-bottom: 16px; color: var(--muted-foreground); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
-  .footer-links { display: grid; gap: 10px; font-size: 0.9375rem; }
+  .footer-links { display: grid; gap: 10px; font-size: 1rem; }
   .footer-links a { transition: color var(--motion-fast); }
   .footer-links a:hover { color: var(--primary); }
   .footer-wordmark { margin: 24px 0 0; overflow: hidden; font-size: clamp(5rem, 24vw, 22rem); font-weight: 600; line-height: 0.8; letter-spacing: -0.065em; text-align: center; color: var(--primary); user-select: none; }
