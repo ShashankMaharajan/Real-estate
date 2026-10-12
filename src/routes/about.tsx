@@ -40,7 +40,7 @@ function About() {
           title={
             <>
               Real estate with
-              <br />a sense of belonging.
+              <br />a sense of <em>belonging</em>.
             </>
           }
         >
@@ -58,7 +58,7 @@ function About() {
           <h2 className="text-title">
             Rooted in Nepal.
             <br />
-            Built around you.
+            Built around <em>you</em>.
           </h2>
           <div className="body-copy space-y-5">
             <p>
@@ -79,8 +79,8 @@ function About() {
       <section className="border-t bg-muted">
         <div className="site-width section grid gap-8 md:grid-cols-3">
           {principles.map((v) => (
-            <div key={v.number}>
-              <span className="text-xs text-primary">{v.number} /</span>
+            <div key={v.number} className="reveal-on-scroll border-t pt-6">
+              <span className="statement text-5xl text-brick">{v.number}</span>
               <h3 className="mt-5">{v.title}</h3>
               <p className="body-copy mt-3 max-w-xs">{v.copy}</p>
             </div>

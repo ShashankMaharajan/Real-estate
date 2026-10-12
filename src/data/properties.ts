@@ -21,6 +21,11 @@ export const typeLabels: Record<PropertyType, string> = {
   apartment: "Apartment",
   land: "Land",
 };
+export const typePluralLabels: Record<PropertyType, string> = {
+  house: "Houses",
+  apartment: "Apartments",
+  land: "Land",
+};
 export const statusLabels: Record<ListingStatus, string> = {
   "for-sale": "For sale",
   reserved: "Reserved",

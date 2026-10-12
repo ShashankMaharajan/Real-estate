@@ -67,7 +67,7 @@ function Contact() {
           <>
             A new beginning
             <br />
-            starts with hello.
+            starts with <em>hello</em>.
           </>
         }
       />
@@ -108,7 +108,7 @@ function Contact() {
           )}
         </div>
         {/* Keyed so arriving from a different listing resets the pre-filled fields. */}
-        <form key={slug} onSubmit={submit} className="space-y-6">
+        <form key={slug} onSubmit={submit} className="surface-card space-y-6 p-6 md:p-10">
           <div className="grid gap-6 sm:grid-cols-2">
             <div>
               <label className="form-label" htmlFor="name">

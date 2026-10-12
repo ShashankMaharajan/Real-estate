@@ -27,14 +27,14 @@ function cardFacts(p: Property) {
  */
 export function PropertyCard({ property: p }: { property: Property }) {
   return (
-    <article className="property-card group">
+    <article className="property-card group reveal-on-scroll">
       <div className="property-media">
         <img
           className="property-image"
           src={p.image}
           alt=""
           width={1024}
-          height={683}
+          height={768}
           loading="lazy"
           decoding="async"
           style={{ viewTransitionName: `property-${p.slug}` }}
@@ -42,22 +42,19 @@ export function PropertyCard({ property: p }: { property: Property }) {
         <span className="property-label" data-status={p.status}>
           {statusLabels[p.status]} · {typeLabels[p.type]}
         </span>
+        <span className="property-cta" aria-hidden>
+          <ArrowUpRight className="size-4" />
+        </span>
       </div>
       <p className="mt-5 flex items-center gap-1.5 text-xs text-muted-foreground">
         <MapPin className="size-3.5" aria-hidden />
         {p.neighbourhood}, {cityLabels[p.city]}
       </p>
-      <div className="mt-2 flex items-start justify-between gap-3">
-        <h3>
-          <Link to="/properties/$slug" params={{ slug: p.slug }} className="property-link">
-            {p.name}
-          </Link>
-        </h3>
-        <ArrowUpRight
-          aria-hidden
-          className="mt-1 size-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary"
-        />
-      </div>
+      <h3 className="mt-2">
+        <Link to="/properties/$slug" params={{ slug: p.slug }} className="property-link">
+          {p.name}
+        </Link>
+      </h3>
       <ul className="property-facts">
         {cardFacts(p).map(({ icon: Icon, text }) => (
           <li key={text}>
@@ -66,14 +63,9 @@ export function PropertyCard({ property: p }: { property: Property }) {
           </li>
         ))}
       </ul>
-      <p className="mt-4 text-sm font-semibold text-primary">
+      <p className="property-price">
         {formatPrice(p.price)}
-        {p.pricePerAana ? (
-          <span className="font-normal text-muted-foreground">
-            {" "}
-            · {formatPrice(p.pricePerAana)} / aana
-          </span>
-        ) : null}
+        {p.pricePerAana ? <small>{formatPrice(p.pricePerAana)} / aana</small> : null}
       </p>
     </article>
   );

@@ -67,18 +67,20 @@ function Services() {
             <>
               Your next move,
               <br />
-              thoughtfully guided.
+              thoughtfully <em>guided</em>.
             </>
           }
         >
           From a first conversation to the right property, we make room for your questions and help
           you move forward with clarity.
         </PageIntro>
-        <div className="mt-14 grid gap-x-12 md:grid-cols-2">
+        <div className="mt-14 grid gap-4 md:grid-cols-2">
           {services.map((s) => (
-            <article key={s.title} className="border-t py-9">
-              <s.icon className="mb-5 size-7 text-primary" strokeWidth={1.25} aria-hidden />
-              <h2 className="text-3xl">{s.title}</h2>
+            <article key={s.title} className="surface-card reveal-on-scroll p-8 md:p-10">
+              <span className="icon-circle mb-8 text-primary">
+                <s.icon className="size-5" strokeWidth={1.5} aria-hidden />
+              </span>
+              <h2 className="text-4xl">{s.title}</h2>
               <p className="body-copy mt-4 max-w-md">{s.text}</p>
               <ul className="mt-5 space-y-3">
                 {s.items.map((i) => (

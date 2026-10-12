@@ -20,7 +20,14 @@ import { themeInitScript } from "@/lib/theme";
 function NotFoundComponent() {
   return (
     <section className="site-width section flex min-h-[70vh] flex-col justify-center">
-      <PageIntro eyebrow="Page not found" title="This door doesn’t lead anywhere.">
+      <PageIntro
+        eyebrow="Page not found"
+        title={
+          <>
+            This door doesn’t lead <em>anywhere</em>.
+          </>
+        }
+      >
         The page you’re looking for doesn’t exist or has been moved.
       </PageIntro>
       <div className="mt-8 flex flex-wrap gap-3">
@@ -44,7 +51,14 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 
   return (
     <section className="site-width section flex min-h-[70vh] flex-col justify-center">
-      <PageIntro eyebrow="Something went wrong" title="This page didn’t load.">
+      <PageIntro
+        eyebrow="Something went wrong"
+        title={
+          <>
+            This page didn’t <em>load</em>.
+          </>
+        }
+      >
         Something went wrong on our end. You can try again or head back home.
       </PageIntro>
       <div className="mt-8 flex flex-wrap gap-3">
@@ -84,7 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1&display=swap",
       },
     ],
   }),

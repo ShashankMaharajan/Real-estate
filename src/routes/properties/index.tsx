@@ -49,7 +49,7 @@ function Properties() {
             <>
               Find a place
               <br />
-              that fits.
+              that <em>fits</em>.
             </>
           }
         >
@@ -57,7 +57,7 @@ function Properties() {
           and share the link with family when something catches your eye.
         </PageIntro>
 
-        <div className="filter-bar mt-10 border-t md:grid-cols-4">
+        <div className="dock filter-bar mt-12 md:grid-cols-4">
           <FilterSelect
             id="city"
             label="Location"
@@ -111,8 +111,10 @@ function Properties() {
             ))}
           </div>
         ) : (
-          <div className="border-y py-16 text-center">
-            <h2 className="text-title">No matching properties.</h2>
+          <div className="surface-card px-6 py-16 text-center">
+            <h2 className="text-title">
+              No matching <em>properties</em>.
+            </h2>
             <p className="body-copy mx-auto mt-3 max-w-sm">
               Try another location, type or budget — or tell us what you’re after and we’ll keep an
               eye out.

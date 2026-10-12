@@ -109,7 +109,7 @@ function PropertyPage() {
             </p>
           </div>
           <div className="md:text-right">
-            <p className="font-serif text-4xl text-primary">{formatPrice(p.price)}</p>
+            <p className="font-serif text-5xl text-primary">{formatPrice(p.price)}</p>
             <p className="mt-1 text-xs text-muted-foreground">
               {p.pricePerAana ? `${formatPrice(p.pricePerAana)} per aana · ` : ""}NPR{" "}
               {groupDigits(p.price)}
@@ -173,10 +173,10 @@ function PropertyPage() {
             </Button>
           </div>
 
-          <aside className="lg:sticky lg:top-8 lg:self-start">
-            <div className="border bg-secondary p-6">
+          <aside className="lg:sticky lg:top-24 lg:self-start">
+            <div className="surface-card p-7">
               <p className="eyebrow text-primary">Interested?</p>
-              <p className="mt-4 font-serif text-3xl text-primary">{formatPrice(p.price)}</p>
+              <p className="mt-4 font-serif text-4xl text-primary">{formatPrice(p.price)}</p>
               <p className="body-copy mt-3">
                 Ask about viewings, documents or the neighbourhood — we’ll come back to you with the
                 details.
@@ -215,7 +215,11 @@ function PropertyPage() {
           <div className="site-width section">
             <SectionHeading
               eyebrow="You might also like"
-              title="Similar places."
+              title={
+                <>
+                  Similar <em>places</em>.
+                </>
+              }
               className="mb-8"
             />
             <div className="grid gap-8 md:grid-cols-3">
