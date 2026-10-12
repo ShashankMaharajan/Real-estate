@@ -13,26 +13,24 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header, Footer } from "@/components/site-layout";
+import { PageIntro } from "@/components/headings";
+import { buttonVariants } from "@/components/ui/button";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="mt-6">
-          <Link
-            to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Go home
-          </Link>
-        </div>
+    <section className="site-width section flex min-h-[70vh] flex-col justify-center">
+      <PageIntro eyebrow="Page not found" title="This door doesn’t lead anywhere.">
+        The page you’re looking for doesn’t exist or has been moved.
+      </PageIntro>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Link to="/" className={buttonVariants({ size: "lg" })}>
+          Go home
+        </Link>
+        <Link to="/properties" className={buttonVariants({ variant: "outline", size: "lg" })}>
+          Browse properties
+        </Link>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -44,33 +42,26 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   }, [error]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
-        </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
-        </p>
-        <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
-            onClick={() => {
-              router.invalidate();
-              reset();
-            }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-          >
-            Try again
-          </button>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
-          >
-            Go home
-          </a>
-        </div>
+    <section className="site-width section flex min-h-[70vh] flex-col justify-center">
+      <PageIntro eyebrow="Something went wrong" title="This page didn’t load.">
+        Something went wrong on our end. You can try again or head back home.
+      </PageIntro>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <button
+          onClick={() => {
+            router.invalidate();
+            reset();
+          }}
+          className={buttonVariants({ size: "lg" })}
+        >
+          Try again
+        </button>
+        {/* A full page load, in case client-side state is what broke. */}
+        <a href="/" className={buttonVariants({ variant: "outline", size: "lg" })}>
+          Go home
+        </a>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -88,7 +79,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Serif+Display&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -117,7 +113,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <Header />
-      <main><Outlet /></main>
+      <main>
+        <Outlet />
+      </main>
       <Footer />
     </QueryClientProvider>
   );

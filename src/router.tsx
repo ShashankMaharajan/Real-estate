@@ -10,6 +10,9 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    // Cross-fades between pages, and morphs a listing photo into its detail page,
+    // in browsers that support view transitions. Turned off under reduced motion (styles.css).
+    defaultViewTransition: true,
   });
 
   return router;
