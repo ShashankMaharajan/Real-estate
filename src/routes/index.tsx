@@ -93,7 +93,7 @@ function Index() {
               asChild
               variant="link"
               size="inline"
-              className="text-primary-foreground focus-visible:ring-primary-foreground focus-visible:ring-offset-transparent"
+              className="text-on-image focus-visible:ring-on-image focus-visible:ring-offset-transparent"
             >
               <Link to="/about">
                 Our story <ArrowRight />

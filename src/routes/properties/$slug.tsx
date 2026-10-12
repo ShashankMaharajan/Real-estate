@@ -123,7 +123,7 @@ function PropertyPage() {
           width={1536}
           height={864}
           fetchPriority="high"
-          className="mt-10 aspect-video w-full object-cover"
+          className="mt-10 aspect-video w-full rounded-media object-cover"
           style={{ viewTransitionName: `property-${p.slug}` }}
         />
 

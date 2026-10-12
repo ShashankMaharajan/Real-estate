@@ -52,7 +52,7 @@ function About() {
           alt="A welcoming home nestled in a Nepalese neighborhood"
           width={1536}
           height={1024}
-          className="mt-12 max-h-120 w-full object-cover"
+          className="mt-12 max-h-120 w-full rounded-media object-cover"
         />
         <div className="mt-14 grid gap-8 md:grid-cols-2">
           <h2 className="text-title">

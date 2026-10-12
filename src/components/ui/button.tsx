@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
         // For buttons sitting on photos: light fill, and a light focus ring that shows on dark images.
         inverse:
-          "bg-background text-primary hover:bg-secondary focus-visible:ring-primary-foreground focus-visible:ring-offset-transparent",
+          "bg-background text-primary hover:bg-secondary focus-visible:ring-on-image focus-visible:ring-offset-transparent",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",

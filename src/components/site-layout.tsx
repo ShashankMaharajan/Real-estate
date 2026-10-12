@@ -3,6 +3,7 @@ import { useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Wordmark } from "./brand";
+import { ThemeToggle } from "./theme-toggle";
 
 const navigation = [
   { to: "/", label: "Home" },
@@ -25,22 +26,25 @@ export function Header() {
             </Link>
           ))}
         </nav>
-        <Button variant="outline" asChild className="hidden text-xs md:inline-flex">
-          <Link to="/contact">
-            Let’s talk <ArrowUpRight />
-          </Link>
-        </Button>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          aria-controls="mobile-navigation"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <X /> : <Menu />}
-        </Button>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <Button variant="outline" asChild className="hidden text-xs md:inline-flex">
+            <Link to="/contact">
+              Let’s talk <ArrowUpRight />
+            </Link>
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            onClick={() => setOpen(!open)}
+          >
+            {open ? <X /> : <Menu />}
+          </Button>
+        </div>
       </div>
       {open && (
         <nav
