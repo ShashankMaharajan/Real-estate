@@ -27,3 +27,11 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## Figma export
+
+With the dev server running (`npm run dev`), `npm run figma:export` captures every page
+(desktop light, desktop dark, mobile) and writes a Figma plugin to
+`figma-export/aangan-figma-plugin/` that rebuilds the site as editable layers. Its
+`README.txt` explains how to run it in Figma. Add `--preview` to also write HTML previews
+of the capture, and run `node scripts/figma-export/selftest.mjs` to dry-run the plugin.

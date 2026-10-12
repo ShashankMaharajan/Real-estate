@@ -1,0 +1,37 @@
+AANGAN — OPEN THE WEBSITE DESIGN IN FIGMA
+==========================================
+
+This folder is a small Figma plugin. Running it once builds the whole website
+as editable Figma layers. You need the Figma desktop app (free):
+https://www.figma.com/downloads/
+
+1. Open the Figma desktop app and create a new design file
+   (Drafts → New design file).
+
+2. Menu → Plugins → Development → Import plugin from manifest…
+   Choose the file "manifest.json" in this folder.
+
+3. Menu → Plugins → Development → "Aangan — build website design".
+   Wait for "Done" (about a minute). Keep the file open while it runs.
+
+4. To download it as a file: Menu → File → Save local copy…
+   This gives you a .fig file you can keep, send, or re-open in Figma.
+
+WHAT YOU GET
+- "Design system" page: color variables (Light and Dark modes), text styles,
+  shadow styles, and specimen boards.
+- One page per website page: Home, Properties, Property detail, About,
+  Services, Contact, 404.
+- On each page, three sections side by side: Desktop · Light, Desktop · Dark,
+  Mobile · Light. Each section holds the page split into named segments
+  (01 · Header, 02 · Hero + Search, 03 · Spaces with possibility, …).
+- Everything is editable: text, shapes, images and icons are real layers.
+
+NOTES
+- Fonts: Fraunces and Instrument Sans (both free Google Fonts, built into
+  Figma). If Figma cannot find one, the plugin uses Inter and says so.
+- Dark-mode color variables need a paid Figma plan (free plans allow one
+  mode); on a free plan you still get every page in light and dark.
+- Hover states and animations are not included (Figma shows the resting state).
+- To regenerate after design changes: run the site ("npm run dev"), then
+  "npm run figma:export" in the project folder.

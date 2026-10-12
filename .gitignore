@@ -45,3 +45,6 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+# Generated Figma export (npm run figma:export)
+/figma-export/
